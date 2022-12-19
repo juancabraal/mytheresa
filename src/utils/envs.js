@@ -2,8 +2,9 @@ import { cleanEnv, str } from "envalid";
 
 const getEnvVars = () => {
   const envVars = cleanEnv(process.env, {
-    NODE_ENV: str(),
+    NODE_ENV: str({ default: "development" }),
     API_URL: str(),
+    API_TOKEN: str(),
   });
 
   return envVars;

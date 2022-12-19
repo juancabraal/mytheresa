@@ -1,5 +1,7 @@
+import MainRouter from "./router";
+
 const App = () => {
-  return <p>Hello World</p>;
+  return <MainRouter />;
 };
 
 export default App;

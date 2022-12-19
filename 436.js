@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmytheresa=self.webpackChunkmytheresa||[]).push([[436],{436:(e,s,t)=>{t.r(s),t.d(s,{default:()=>r});var a=t(893);const r=function(){return(0,a.jsx)("p",{children:"DetailPage"})}}}]);

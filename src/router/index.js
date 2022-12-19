@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import envs from "../utils/envs";
 
 const HomePage = lazy(() => import("../pages/home"));
 const DetailPage = lazy(() => import("../pages/detail"));
@@ -10,10 +11,13 @@ const MainRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/detail/:category/:slug" element={<DetailPage />} />
-        <Route path="/wish-list" element={<WishPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path={envs.APP_URL} element={<HomePage />} />
+        <Route
+          path={`${envs.APP_URL}/detail/:category/:slug`}
+          element={<DetailPage />}
+        />
+        <Route path={`${envs.APP_URL}/wish-list`} element={<WishPage />} />
+        <Route path={`*`} element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );

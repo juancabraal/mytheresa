@@ -9,6 +9,7 @@ env:
   API_TOKEN: ${{ secrets.API_TOKEN }}
 jobs:
   build:
+    name: Build and Deploy
     runs-on: ubuntu-latest
 
     strategy:
@@ -29,25 +30,8 @@ jobs:
     - name: Build application
       run: npm run build
 
-    - name: Archive Production Artifact
-      uses: actions/upload-artifact@main
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        name: build
-        path: build
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@main
-      - name: Download Artifact
-        uses: actions/download-artifact@main
-        with:
-          name: build
-          path: build
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
-          publish_dir: ./build
+        deploy_key: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+        publish_dir: ./build

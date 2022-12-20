@@ -21,11 +21,9 @@ module.exports = merge(config, {
       deleteOriginalAssets: false,
     }),
     new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: "production",
-        APP_URL: JSON.stringify(process.env.APP_URL),
-        API_TOKEN: JSON.stringify(process.env.API_TOKEN),
-      },
+      "process.env.NODE_ENV": JSON.stringify("production"),
+      "process.env.APP_URL": JSON.stringify(process.env.APP_URL),
+      "process.env.API_TOKEN": JSON.stringify(process.env.API_TOKEN),
     }),
   ],
   optimization: {

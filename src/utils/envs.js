@@ -4,7 +4,6 @@ const getEnvVars = () => {
   const envVars = cleanEnv(process.env, {
     NODE_ENV: str({ default: "development" }),
     APP_URL: str({ default: "/" }),
-    API_URL: str(),
     API_TOKEN: str(),
   });
 

@@ -6,6 +6,8 @@ import prefix from "loglevel-plugin-prefix";
 import App from "./App";
 import envs from "./utils/envs";
 
+import "./index.scss";
+
 prefix.reg(log);
 prefix.apply(log);
 log.enableAll();

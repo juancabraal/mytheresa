@@ -3,10 +3,11 @@ const TerserPlugin = require("terser-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const webpack = require("webpack");
 const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 const config = require("./webpack.config.js");
 
-module.exports = merge(config, {
+module.exports = merge(config(), {
   mode: "production",
   devtool: false,
   plugins: [
@@ -20,8 +21,9 @@ module.exports = merge(config, {
       minRatio: 0.8,
       deleteOriginalAssets: false,
     }),
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("production"),
+    new Dotenv({
+      path: "./.env.production",
+      ignoreStub: true,
     }),
   ],
   optimization: {

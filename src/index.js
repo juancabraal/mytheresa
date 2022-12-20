@@ -11,7 +11,7 @@ prefix.reg(log);
 prefix.apply(log);
 log.enableAll();
 log.setDefaultLevel(
-  process?.env?.NODE_ENV !== "development" ? log.levels.ERROR : log.levels.INFO
+  process.env.NODE_ENV !== "development" ? log.levels.ERROR : log.levels.INFO
 );
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

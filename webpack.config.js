@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 
-module.exports = {
+const config = {
   entry: path.join(__dirname, "src", "index.js"),
   output: {
     path: path.resolve(__dirname, "build"),
@@ -12,9 +12,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       favicon: path.join(__dirname, "public", "favicon.ico"),
       template: path.join(__dirname, "public", "index.html"),
-    }),
-    new Dotenv({
-      systemvars: true,
     }),
   ],
   devServer: {
@@ -40,4 +37,18 @@ module.exports = {
       },
     ],
   },
+};
+
+module.exports = (env, argv) => {
+  if (argv && argv.mode === "development") {
+    config.plugins = [
+      ...config.plugins,
+      new Dotenv({
+        path: "./.env.development",
+        systemvars: true,
+      }),
+    ];
+  }
+
+  return config;
 };

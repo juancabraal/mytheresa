@@ -10,13 +10,13 @@ const MainRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={process?.env?.APP_URL} element={<HomePage />} />
+        <Route path={process.env.APP_URL} element={<HomePage />} />
         <Route
-          path={`${process?.env?.APP_URL}/detail/:category/:slug`}
+          path={`${process.env.APP_URL}/detail/:category/:slug`}
           element={<DetailPage />}
         />
         <Route
-          path={`${process?.env?.APP_URL}/wish-list`}
+          path={`${process.env.APP_URL}/wish-list`}
           element={<WishPage />}
         />
         <Route path={`*`} element={<NotFoundPage />} />

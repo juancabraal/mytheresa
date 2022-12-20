@@ -20,6 +20,13 @@ module.exports = merge(config, {
       minRatio: 0.8,
       deleteOriginalAssets: false,
     }),
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: "production",
+        APP_URL: JSON.stringify(process.env.APP_URL),
+        API_TOKEN: JSON.stringify(process.env.API_TOKEN),
+      },
+    }),
   ],
   optimization: {
     minimize: true,

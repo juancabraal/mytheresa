@@ -1,23 +1,20 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const webpack = require("webpack");
-
-const dotenv = require("dotenv").config({
-  path: path.join(__dirname, ".env"),
-});
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: path.join(__dirname, "src", "index.js"),
   output: {
     path: path.resolve(__dirname, "build"),
   },
+  mode: "development",
   plugins: [
     new HtmlWebpackPlugin({
       favicon: path.join(__dirname, "public", "favicon.ico"),
       template: path.join(__dirname, "public", "index.html"),
     }),
-    new webpack.DefinePlugin({
-      "process.env": JSON.stringify(dotenv.parsed),
+    new Dotenv({
+      systemvars: true,
     }),
   ],
   devServer: {

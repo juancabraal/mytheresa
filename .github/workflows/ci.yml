@@ -30,7 +30,10 @@ jobs:
         API_TOKEN: ${{ secrets.API_TOKEN }}
         
     - name: Deploy
-      run: npm run deploy
+      run: |
+        git config --global user.name $user_name
+        git config --global user.email $user_email
+        npm run deploy
       env:
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'

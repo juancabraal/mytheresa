@@ -1,8 +1,8 @@
 @use "../../theme/utils.scss";
 @use "../../theme/metrics.scss";
 
-@mixin mobile-navigation {
-  @media (max-width: 693px) {
+@mixin web-navigation {
+  @media (min-width: 693px) {
     @content
   }
 }
@@ -16,7 +16,7 @@
 
   .header-content {
     @include utils.flexCenterVertical;
-    padding: metrics.spacing(2, 4);
+    padding: metrics.spacing(2, 0);
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
     position: relative;
@@ -31,6 +31,10 @@
       flex: 1;
       @include utils.flexCenterVertical;
       gap: metrics.spacing(1);
+
+      @include web-navigation {
+        padding-left: metrics.spacing(3);
+      }
   
       img {
         width: 30px;
@@ -38,7 +42,6 @@
     }
   
     .menu-mobile-btn {
-      margin-left: - metrics.spacing(4);
       margin-right: metrics.spacing(1);
       padding-top: metrics.spacing(2.1);
     }

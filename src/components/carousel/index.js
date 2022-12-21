@@ -1,25 +1,21 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import useSWRInfinite from "swr/infinite";
 import { Navigation, Pagination, EffectCreative } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FiCalendar } from "react-icons/fi";
-import StarRatings from "react-star-ratings";
-import { useNavigate } from "react-router-dom";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 import { axiosFetcher } from "../../api/fetchers";
-import { formatDate } from "../../utils/date";
-import Button from "../../components/button";
-import { getStarsRealValue } from "../../utils/number";
 
 import "swiper/css";
 import "swiper/css/effect-creative";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./style.scss";
+import MovieSlide from "./MovieSlide";
 
 const Carousel = ({ category }) => {
-  const navigate = useNavigate();
-  const APP_URL = process.env.APP_URL;
+  const swiper = useSwiper();
+  console.log("swiper", swiper);
+
   const {
     data: response,
     isValidating,
@@ -67,56 +63,9 @@ const Carousel = ({ category }) => {
     >
       {movieList.map((value) => (
         <SwiperSlide key={value.id}>
-          <div className="movie-slide">
-            <div
-              className="movie-backdrop-image"
-              style={{
-                backgroundImage: `url("http://image.tmdb.org/t/p/w500/${value.backdrop_path}")`,
-              }}
-            />
-            <div className="movie-content">
-              <div className="movie-post-image">
-                <img
-                  src={`http://image.tmdb.org/t/p/w500/${value.poster_path}`}
-                />
-              </div>
-              <div className="movie-information">
-                <div className="title">
-                  <h3>{value.title}</h3>
-                  <Button
-                    variant="contained"
-                    onClick={() =>
-                      navigate(
-                        `${APP_URL}detail/${category.toLowerCase()}/${value.id}`
-                      )
-                    }
-                    className="more-info-btn"
-                  >
-                    More info
-                  </Button>
-                </div>
-                <div className="date-ratio-info">
-                  <div className="date">
-                    <FiCalendar />
-                    <p>{formatDate(value.release_date)}</p>
-                  </div>
-                  <div className="ratio">
-                    <StarRatings
-                      rating={getStarsRealValue(value.vote_average)}
-                      numberOfStars={5}
-                      starRatedColor="#f39c12"
-                      starSpacing="1px"
-                      starDimension="16px"
-                    />
-                    <p>{`${value.vote_average} (${value.vote_count})`}</p>
-                  </div>
-                </div>
-                <div className="description">
-                  <p>{value.overview}</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          {({ isActive }) => (
+            <MovieSlide movie={value} category={category} isActive={isActive} />
+          )}
         </SwiperSlide>
       ))}
     </Swiper>

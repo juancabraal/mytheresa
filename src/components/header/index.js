@@ -7,17 +7,18 @@ import Button from "../button";
 import { useEffect, useState } from "react";
 import CATEGORIES from "../../consts/categories";
 import MenuButtonIcon from "../animations/MenuButtonIcon";
-import MenuList from "../animations/MenuList";
+import SlideBottomList from "../animations/SlideBottomList";
 import { useDimensions } from "../../utils/hooks/useDimensions";
 
 import "./style.scss";
+import { getApplicationRoute } from "../../utils/route";
 
 const Menu = ({ isMobile, isOpen, children }) => {
   if (isMobile) {
     return (
-      <MenuList open={isOpen} height={200}>
+      <SlideBottomList open={isOpen} height={200}>
         {children}
-      </MenuList>
+      </SlideBottomList>
     );
   }
 
@@ -29,8 +30,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useCycle(false, true);
   const [windowWidth] = useDimensions();
   const isMobile = windowWidth <= 693;
-  const categoriesKeys = Object.keys(CATEGORIES);
-  const APP_URL = process.env.APP_URL;
+  const CATEGORIES_KEYS = Object.keys(CATEGORIES);
 
   const [selectedSection, setSelectedSection] = useState("POPULAR");
   const onScroll = (event) => {
@@ -48,7 +48,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    if (location.pathname === APP_URL) {
+    if (location.pathname === getApplicationRoute()) {
       document.addEventListener("scroll", onScroll, true);
     } else {
       setSelectedSection("");
@@ -73,11 +73,11 @@ const Header = () => {
         <div className="action-buttons">
           <div className={`navigation ${isMobile ? "navigation-mobile" : ""}`}>
             <Menu isOpen={isMenuOpen} isMobile={isMobile}>
-              {categoriesKeys.map((value) => (
+              {CATEGORIES_KEYS.map((value) => (
                 <Button
                   key={value}
                   Component={Link}
-                  to={`${APP_URL}?${value.toLowerCase()}`}
+                  to={getApplicationRoute(`?${value.toLowerCase()}`)}
                   preventScrollReset
                   className={selectedSection === value ? "button-active" : ""}
                   onClick={setIsMenuOpen}

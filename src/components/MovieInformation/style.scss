@@ -1,0 +1,70 @@
+@use "../../theme/colors.scss";
+@use "../../theme/metrics.scss";
+@use "../../theme/utils.scss";
+
+.movie-information {
+  width: 100%;
+  color: colors.$DEFAULT_LIGHT_COLOR;
+  padding: metrics.spacing(2, 3, 5, 3);
+
+  & h2,
+  h4,
+  p {
+    margin: 0;
+  }
+
+  .title {
+    margin-bottom: metrics.spacing(1);
+    @include utils.flexCenterVertical;
+    justify-content: space-between;
+    gap: spacing(1);
+  }
+
+  .wish-button {
+    margin-right: - metrics.spacing(2);
+
+    .wish-added {
+      color: colors.$FAILURE_COLOR;
+    }
+  }
+
+  .list-info {
+    margin: 0;
+    padding: 0;
+
+    & .date,
+    .ratio {
+      @include utils.flexCenterVertical;
+      display: inline-flex;
+      gap: metrics.spacing(1);
+    }
+
+    li {
+      list-style: none;
+      display: inline-block;
+      margin: metrics.spacing(0, 2, 2, 0);
+
+      h4 {
+        margin-top: metrics.spacing(1);
+
+        .pos-revenue {
+          color: colors.$SUCCESS_COLOR;
+        }
+
+        .neg-revenue {
+          color: colors.$FAILURE_COLOR;
+        }
+      }
+    }
+  }
+
+  .external-site a {
+    color: colors.$DEFAULT_LIGHT_COLOR;
+  }
+
+  & .date-ratio-info,
+  .description,
+  .amount-values {
+    margin-bottom: metrics.spacing(2);
+  }
+}

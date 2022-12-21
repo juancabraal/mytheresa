@@ -33,12 +33,14 @@
 
     .movie-content {
       z-index: 10;
+      width: 100%;
 
       .movie-post-image {
-        margin-top: metrics.spacing(4);
-        height: calc(100vh - 150px);
+        @include utils.flexCenterVertical;
+        @include utils.flexCenterHorizontal;
         img {
-          height: 100%;
+          max-height: 70%;
+          max-width: 70%;
         }
       }
 

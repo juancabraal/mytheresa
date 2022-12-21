@@ -1,0 +1,13 @@
+.home-container {
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+
+  &,.movie-section {
+    height: 100vh;
+  }
+
+  .movie-section {
+    height: 100vh;
+    scroll-snap-align: center;
+  }
+}

@@ -1,0 +1,11 @@
+@import "../../theme/media-queries.scss";
+
+.page-wrapper {
+  max-width: $lg;
+  width: 100%;
+  position: relative;
+
+  &, .page-content {
+    height: 100%;
+  }
+}

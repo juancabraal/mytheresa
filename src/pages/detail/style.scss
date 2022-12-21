@@ -1,0 +1,109 @@
+@use "../../theme/utils.scss";
+@use "../../theme/colors.scss";
+@use "../../theme/metrics.scss";
+
+.movie-detail {
+  position: relative;
+  height: 100%;
+  background: rgb(0, 0, 0);
+
+  .movie-backdrop-image {
+    height: 50vh;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    &:before {
+      content: " ";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    }
+  }
+
+  .movie-content {
+    padding-top: 100px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .movie-post-image {
+      height: 50vh;
+      img {
+        height: 100%;
+      }
+    }
+
+    .movie-information {
+      width: 100%;
+      color: colors.$DEFAULT_LIGHT_COLOR;
+      padding: metrics.spacing(2, 4, 5, 4);
+      
+      & h2, h4,
+      p {
+        margin: 0;
+      }
+    
+      .title {
+        margin-bottom: metrics.spacing(1);
+        @include utils.flexCenterVertical;
+        justify-content: space-between;
+        gap: spacing(1);
+      }
+    
+      .date-ratio-info {
+        @include utils.flexCenterVertical;
+        gap: metrics.spacing(3);
+    
+        & .date,
+        .ratio {
+          @include utils.flexCenterVertical;
+          gap: metrics.spacing(1);
+        }
+      }
+
+      .amount-values {
+        margin: 0;
+        padding: 0;
+        
+        li {
+          list-style: none;
+          display: inline-block;
+          margin-right: metrics.spacing(2);
+          h4 {
+            margin-top: metrics.spacing(1);
+
+            .pos-revenue {
+              color: colors.$SUCCESS_COLOR;
+            }
+
+            .neg-revenue {
+              color: colors.$FAILURE_COLOR;
+            }
+          }
+        }
+      }
+
+      .external-site a {
+        color: colors.$DEFAULT_LIGHT_COLOR;
+      }
+
+      & .date-ratio-info,
+      .description,
+      .amount-values {
+        margin-bottom: metrics.spacing(2);
+      }
+    }
+  }
+}

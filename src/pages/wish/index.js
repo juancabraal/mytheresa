@@ -1,15 +1,19 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaHeart } from "react-icons/fa";
 
-import MovieItem from "../../components/movieItem";
+import AnimatedList from "../../components/animations/AnimatedList";
+import Button from "../../components/button";
+import MovieInformation from "../../components/MovieInformation";
+import MoviePoster from "../../components/MoviePoster";
 import { WishListContext } from "../../context/WishListContext";
+import { getApplicationRoute } from "../../utils/route";
 
 import "./style.scss";
 
 const WishPage = () => {
   const { wishList, removeItemFromList } = useContext(WishListContext);
   const navigate = useNavigate();
-  const APP_URL = process.env.APP_URL;
 
   return (
     <div className="wish-list-container">
@@ -17,16 +21,36 @@ const WishPage = () => {
         <h2>Wish List</h2>
       </div>
       <div className="list-container">
-        {wishList.map((value) => (
-          <MovieItem
-            key={value.id}
-            movie={value}
-            onClick={() =>
-              navigate(`${APP_URL}detail/${value.category}/${value.id}`)
-            }
-            onRemove={() => removeItemFromList(value.id)}
-          />
-        ))}
+        <AnimatedList>
+          {wishList.map((movie) => (
+            <div className="movie-item" key={movie.id} movieId={movie.id}>
+              <Button
+                className="movie-post-button"
+                onClick={() =>
+                  navigate(
+                    getApplicationRoute(`/detail/${movie.category}/${movie.id}`)
+                  )
+                }
+              >
+                <MoviePoster posterUrl={movie.poster_path} />
+              </Button>
+              <MovieInformation
+                movieDetail={movie}
+                movieAction={
+                  <Button
+                    className="wish-button"
+                    onClick={() => removeItemFromList(movie.id)}
+                  >
+                    <FaHeart fontSize={25} className="wish-added" />
+                  </Button>
+                }
+                showDescription={false}
+                showExternalSite={false}
+                showRevenue={false}
+              />
+            </div>
+          ))}
+        </AnimatedList>
       </div>
     </div>
   );

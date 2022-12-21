@@ -58,12 +58,6 @@ const Header = () => {
     };
   }, [location.pathname]);
 
-  useEffect(() => {
-    if (!isMobile) {
-      setIsMenuOpen();
-    }
-  }, [isMobile]);
-
   return (
     <div className="header-container">
       <div className="header-content">

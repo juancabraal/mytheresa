@@ -1,0 +1,13 @@
+@use "../../../theme/metrics.scss";
+
+.menu-list-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: metrics.spacing(3);
+  height: 100%;
+
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+}

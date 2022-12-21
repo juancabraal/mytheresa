@@ -11,7 +11,7 @@ module.exports = merge(config(), {
   mode: "production",
   devtool: false,
   output: {
-    publicPath: "/mytheresa",
+    publicPath: "/mytheresa/",
   },
   plugins: [
     new DuplicatePackageCheckerPlugin(),

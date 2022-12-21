@@ -25,7 +25,7 @@ const sideVariants = {
   },
 };
 
-const MenuList = ({ open, height, children }) => {
+const SlideBottomList = ({ open, height, children }) => {
   const arrayChildren = Children.toArray(children);
   return (
     <AnimatePresence>
@@ -41,7 +41,7 @@ const MenuList = ({ open, height, children }) => {
           }}
         >
           <motion.div
-            className="menu-list-container"
+            className="slide-list-container"
             initial="closed"
             animate="open"
             exit="closed"
@@ -59,4 +59,4 @@ const MenuList = ({ open, height, children }) => {
   );
 };
 
-export default MenuList;
+export default SlideBottomList;

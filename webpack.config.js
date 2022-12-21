@@ -6,6 +6,7 @@ const config = {
   entry: path.join(__dirname, "src", "index.js"),
   output: {
     path: path.resolve(__dirname, "build"),
+    publicPath: "/",
   },
   mode: "development",
   plugins: [
@@ -31,9 +32,13 @@ const config = {
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
-        test: /\.(png|jpg|jpeg|woff|woff2|eot|ttf|svg)$/,
+        test: /\.(png|jpg|jpeg|woff|woff2|eot|ttf)$/,
         loader: "url-loader",
         options: { limit: false },
+      },
+      {
+        test: /\.svg$/,
+        use: "file-loader",
       },
     ],
   },

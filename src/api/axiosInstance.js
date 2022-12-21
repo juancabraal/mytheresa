@@ -4,7 +4,7 @@ import { applyLogInterceptor } from "./logInterceptor";
 
 export const axios = Axios.create({
   responseType: "json",
-  baseURL: process.env.API_URL,
+  baseURL: "https://api.themoviedb.org/3/",
 });
 
 applyAuthInterceptor(axios);

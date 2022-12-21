@@ -1,0 +1,85 @@
+@use "../../theme/utils.scss";
+@use "../../theme/colors.scss";
+@use "../../theme/metrics.scss";
+
+.movie-item {
+  border: 1px solid rgba($color: #000000, $alpha: 0.1);
+  border-radius: metrics.$radius;
+  padding: metrics.spacing(2);
+  gap: metrics.spacing(2);
+  display: flex;
+
+  .movie-post-image {
+    height: 200px;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  & .movie-post-image, .movie-information .title {
+    padding: 0;
+    color: #000;
+  }
+
+  .movie-information {
+    width: 100%;
+
+    & h2,
+    h4,
+    p {
+      margin: 0;
+    }
+
+    .title {
+      margin-bottom: metrics.spacing(1);
+      @include utils.flexCenterVertical;
+      justify-content: space-between;
+      gap: metrics.spacing(1);
+    }
+
+    .date-ratio-info {
+      @include utils.flexCenterVertical;
+      gap: metrics.spacing(3);
+
+      & .date,
+      .ratio {
+        @include utils.flexCenterVertical;
+        gap: metrics.spacing(1);
+      }
+    }
+
+    .amount-values {
+      margin: 0;
+      padding: 0;
+
+      li {
+        list-style: none;
+        display: inline-block;
+        margin-right: metrics.spacing(2);
+
+        h4 {
+          margin-top: metrics.spacing(1);
+
+          .pos-revenue {
+            color: colors.$SUCCESS_COLOR;
+          }
+
+          .neg-revenue {
+            color: colors.$FAILURE_COLOR;
+          }
+        }
+      }
+    }
+
+    .external-site a {
+      color: colors.$DEFAULT_LIGHT_COLOR;
+    }
+
+    & .date-ratio-info,
+    .description,
+    .amount-values {
+      margin-bottom: metrics.spacing(2);
+    }
+  }
+}

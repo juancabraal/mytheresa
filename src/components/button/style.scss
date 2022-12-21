@@ -1,0 +1,32 @@
+@use "../../theme/utils.scss";
+@import "../../theme/metrics.scss";
+
+@mixin selectedButton {
+  background-color: rgba($color: #fff, $alpha: 0.1);
+}
+
+.button {
+  text-decoration: none;
+  border: none;
+  padding: spacing(1, 3);
+  cursor: pointer;
+  border-radius: $radius;
+  color: #fff;
+
+  &:hover {
+    @include selectedButton;
+  }
+
+  &.button-active {
+    @include selectedButton;
+  }
+}
+
+.button-text {
+  background: transparent;
+}
+
+.button-contained {
+  color: #000;
+  background: #fff;
+}

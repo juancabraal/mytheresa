@@ -1,0 +1,33 @@
+@use "../../theme/utils.scss";
+@import "../../theme/metrics.scss";
+
+.header-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  @include utils.flexCenterVertical;
+  justify-content: space-between;
+  padding: spacing(2, 4);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+
+  & h2, img, button {
+    color: white;
+  }
+
+  .logo-container {
+    @include utils.flexCenterVertical;
+    gap: spacing(2);
+    img {
+      width: 30px;
+    }
+  }
+
+  .action-buttons {
+    @include utils.flexCenterVertical;
+    gap: spacing(2);
+    z-index: 1000;
+  }
+}

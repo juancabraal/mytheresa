@@ -1,0 +1,14 @@
+@use "../../theme/utils.scss";
+@use "../../theme/colors.scss";
+@use "../../theme/metrics.scss";
+
+.wish-list-container {
+  padding: metrics.spacing(5, 4);
+  padding-top: 100px;
+
+  .list-container {
+    display: flex;
+    flex-direction: column;
+    gap: metrics.spacing(2);
+  }
+}

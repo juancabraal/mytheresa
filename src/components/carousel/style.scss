@@ -74,6 +74,22 @@
             gap: metrics.spacing(1);
           }
         }
+
+        @media screen and (max-width: 375px) {
+          padding-bottom: metrics.spacing(12);
+
+          .date-ratio-info {
+            align-items: flex-start;
+            gap: metrics.spacing(1);
+            flex-direction: column;
+          }
+
+          .more-info-btn {
+            position: absolute;
+            width: calc(100% - 60px);
+            bottom: 40px;
+          }
+        }
       }
     }
   }

@@ -90,6 +90,7 @@ const Carousel = ({ category }) => {
                         `${APP_URL}detail/${category.toLowerCase()}/${value.id}`
                       )
                     }
+                    className="more-info-btn"
                   >
                     More info
                   </Button>

@@ -5,7 +5,7 @@ import prefix from "loglevel-plugin-prefix";
 
 import App from "./App";
 
-import "./index.scss";
+import "./theme/general.scss";
 
 prefix.reg(log);
 prefix.apply(log);

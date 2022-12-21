@@ -9,6 +9,11 @@
   gap: metrics.spacing(2);
   display: flex;
 
+  @media screen and (max-width: 425px) {
+    gap: metrics.spacing(1);
+    flex-direction: column;
+  }
+
   .movie-post-image {
     height: 200px;
 
@@ -17,7 +22,7 @@
     }
   }
 
-  & .movie-post-image, .movie-information .title {
+  & .movie-post-image, .movie-information .title button {
     padding: 0;
     color: #000;
   }
@@ -26,7 +31,6 @@
     width: 100%;
 
     & h2,
-    h4,
     p {
       margin: 0;
     }
@@ -34,8 +38,7 @@
     .title {
       margin-bottom: metrics.spacing(1);
       @include utils.flexCenterVertical;
-      justify-content: space-between;
-      gap: metrics.spacing(1);
+      justify-content: space-between
     }
 
     .date-ratio-info {
@@ -49,37 +52,14 @@
       }
     }
 
-    .amount-values {
-      margin: 0;
-      padding: 0;
-
-      li {
-        list-style: none;
-        display: inline-block;
-        margin-right: metrics.spacing(2);
-
-        h4 {
-          margin-top: metrics.spacing(1);
-
-          .pos-revenue {
-            color: colors.$SUCCESS_COLOR;
-          }
-
-          .neg-revenue {
-            color: colors.$FAILURE_COLOR;
-          }
-        }
-      }
-    }
-
-    .external-site a {
-      color: colors.$DEFAULT_LIGHT_COLOR;
-    }
-
-    & .date-ratio-info,
-    .description,
-    .amount-values {
+    & .date-ratio-info {
       margin-bottom: metrics.spacing(2);
+
+      @media screen and (max-width: 550px) {
+        align-items: flex-start;
+        gap: metrics.spacing(1);
+        flex-direction: column;
+      }
     }
   }
 }

@@ -1,5 +1,6 @@
 import StarRatings from "react-star-ratings";
 import { FiCalendar } from "react-icons/fi";
+import { FaHeart } from "react-icons/fa";
 
 import Button from "../button";
 import { formatDate } from "../../utils/date";
@@ -19,9 +20,14 @@ const MovieItem = ({ movie, onRemove, onClick }) => {
         />
       </Button>
       <div className="movie-information">
-        <Button className="title" onClick={onClick}>
-          <h2>{movie.title}</h2>
-        </Button>
+        <div className="title">
+          <Button onClick={onClick}>
+            <h2>{movie.title}</h2>
+          </Button>
+          <Button className="wish-button" onClick={onRemove}>
+            <FaHeart fontSize={25} className="wish-added" />
+          </Button>
+        </div>
         <div className="date-ratio-info">
           <div className="date">
             <FiCalendar />
@@ -38,9 +44,6 @@ const MovieItem = ({ movie, onRemove, onClick }) => {
             <p>{`${movie.vote_average} (${movie.vote_count})`}</p>
           </div>
         </div>
-        <Button variant="contained" onClick={onRemove}>
-          Remove from list
-        </Button>
       </div>
     </div>
   );

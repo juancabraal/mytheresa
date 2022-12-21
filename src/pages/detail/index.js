@@ -2,6 +2,7 @@ import { useContext, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
 import { FiCalendar } from "react-icons/fi";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import StarRatings from "react-star-ratings";
 
 import { axiosFetcher } from "../../api/fetchers";
@@ -54,22 +55,26 @@ const DetailPage = () => {
           <div className="title">
             <h2>{movieDetail.title}</h2>
             <Button
-              variant="contained"
               onClick={() =>
                 isOnList
                   ? removeItemFromList(movieDetail.id)
                   : addItemToList(movieDetail, category)
               }
+              className="wish-button"
             >
-              {isOnList ? "Remove from list" : "Add to list"}
+              {isOnList ? (
+                <FaHeart fontSize={25} className="wish-added" />
+              ) : (
+                <FaRegHeart fontSize={25} className="wish-add" />
+              )}
             </Button>
           </div>
-          <div className="date-ratio-info">
-            <div className="date">
+          <ul className="list-info">
+            <li className="date">
               <FiCalendar />
-              <p>{formatDate(movieDetail.release_date)}</p>
-            </div>
-            <div className="ratio">
+              <h4>{formatDate(movieDetail.release_date)}</h4>
+            </li>
+            <li className="ratio">
               <StarRatings
                 rating={getStarsRealValue(movieDetail.vote_average)}
                 numberOfStars={5}
@@ -77,13 +82,13 @@ const DetailPage = () => {
                 starSpacing="1px"
                 starDimension="16px"
               />
-              <p>{`${movieDetail.vote_average} (${movieDetail.vote_count})`}</p>
-            </div>
-          </div>
+              <h4>{`${movieDetail.vote_average} (${movieDetail.vote_count})`}</h4>
+            </li>
+          </ul>
           <div className="description">
             <p>{movieDetail.overview}</p>
           </div>
-          <ul className="amount-values">
+          <ul className="list-info">
             <li>
               <p>Budget</p>
               <h4>{convertToCurrency(movieDetail.budget)}</h4>

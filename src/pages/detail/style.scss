@@ -6,6 +6,7 @@
   position: relative;
   height: 100%;
   background: rgb(0, 0, 0);
+  overflow-y: auto;
 
   .movie-backdrop-image {
     height: 50vh;
@@ -40,15 +41,21 @@
 
     .movie-post-image {
       height: 50vh;
+      
+      @media screen and (max-width: 487px) {
+        margin: metrics.spacing(0, 4);
+      }
+
       img {
-        height: 100%;
+        max-height: 100%;
+        max-width: 100%;
       }
     }
 
     .movie-information {
       width: 100%;
       color: colors.$DEFAULT_LIGHT_COLOR;
-      padding: metrics.spacing(2, 4, 5, 4);
+      padding: metrics.spacing(2, 3, 5, 3);
       
       & h2, h4,
       p {
@@ -61,26 +68,29 @@
         justify-content: space-between;
         gap: spacing(1);
       }
-    
-      .date-ratio-info {
-        @include utils.flexCenterVertical;
-        gap: metrics.spacing(3);
-    
-        & .date,
-        .ratio {
-          @include utils.flexCenterVertical;
-          gap: metrics.spacing(1);
+
+      .wish-button {
+        margin-right: - metrics.spacing(2);
+        .wish-added {
+          color: colors.$FAILURE_COLOR;
         }
       }
-
-      .amount-values {
+    
+      .list-info {
         margin: 0;
         padding: 0;
+
+        & .date,
+          .ratio {
+            @include utils.flexCenterVertical;
+            display: inline-flex;
+            gap: metrics.spacing(1);
+          }
         
         li {
           list-style: none;
           display: inline-block;
-          margin-right: metrics.spacing(2);
+          margin: metrics.spacing(0, 2, 2, 0);
           h4 {
             margin-top: metrics.spacing(1);
 

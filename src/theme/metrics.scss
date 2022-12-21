@@ -1,0 +1,11 @@
+$radius: 5px;
+$defaultSpace: 8px;
+
+@function spacing($spaces...) {
+  $spacesList: ();
+  @each $space in $spaces {
+    $spacesList: append($spacesList, $space * $defaultSpace);
+  }
+  
+  @return $spacesList;
+}

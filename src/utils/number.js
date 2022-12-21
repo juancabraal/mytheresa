@@ -4,5 +4,6 @@ export const getStarsRealValue = (percent = 0, stars = 5) => {
 };
 
 export const isWhatPercentOf = (oldNumber, newNumber) => {
+  if (oldNumber === 0 || newNumber === 0) return 0;
   return (1 - oldNumber / newNumber) * 100;
 };

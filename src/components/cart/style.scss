@@ -1,0 +1,21 @@
+@use "../../theme/colors.scss";
+.cart-wrapper {
+  .cart-button-action {
+    position: relative;
+    img {
+      width: 30px;
+    }
+
+    .cart-badge {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      padding: 2.5px;
+      bottom: 5px;
+      right: 20px;
+      background-color: colors.$DEFAULT_LIGHT_COLOR;
+      color: black;
+    }
+  }
+}

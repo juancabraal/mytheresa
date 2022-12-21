@@ -1,1 +1,1 @@
-"use strict";(self.webpackChunkmytheresa=self.webpackChunkmytheresa||[]).push([[329],{329:(e,s,t)=>{t.r(s),t.d(s,{default:()=>r});var n=t(893);const r=function(){return(0,n.jsx)("p",{children:"NotFoundPage"})}}}]);
+"use strict";(self.webpackChunkmytheresa=self.webpackChunkmytheresa||[]).push([[329],{329:(e,s,t)=>{t.r(s),t.d(s,{default:()=>r});var n=t(5893);const r=function(){return(0,n.jsx)("p",{children:"NotFoundPage"})}}}]);

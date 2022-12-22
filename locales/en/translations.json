@@ -1,0 +1,18 @@
+{
+  "wishListTitle": "Wish List",
+  "homeSectionTrending": "Trending",
+  "homeSectionTopRated": "Top rated",
+  "movieDetailRecommendations": "People also like",
+  "movieDetailSinopse": "Synopsis",
+  "movieDetailCreators": "Crew",
+  "movieDetailStars": "Cast",
+  "movieDetailReviews": "Reviewers",
+  "movieDetailFailure": "Unable to get movie detail",
+  "movieDetailCreatorsFailure": "Unable to get movie crew",
+  "movieDetailStarsFailure": "Unable to get movie cast",
+  "movieDetailReviewersFailure": "Unable to get movie reviewers",
+  "movieDetailRecommendationFailure": "Unable to get movie recommendations",
+  "movieListDiscoverFailure": "Unable to get list of movies to discover",
+  "movieListPopularFailure": "Unable to get popular movie list",
+  "movieListTopRatedFailure": "Unable to get top rated movie list"
+}

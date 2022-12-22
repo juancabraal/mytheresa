@@ -1,0 +1,18 @@
+{
+  "wishListTitle": "Lista de deseos",
+  "homeSectionTrending": "Tendencias",
+  "homeSectionTopRated": "Los más valorados",
+  "movieDetailRecommendations": "A la gente también le gusta",
+  "movieDetailSinopse": "Synopsis",
+  "movieDetailCreators": "Creadores",
+  "movieDetailStars": "Elenco",
+  "movieDetailReviews": "Revisores",
+  "movieDetailFailure": "No puede cargar detalle de la pelicula",
+  "movieDetailCreatorsFailure": "No puede cargar equipo de la pelicula",
+  "movieDetailStarsFailure": "No puede cargar elenco de la pelicula",
+  "movieDetailReviewersFailure": "No puede cargar revisores de la pelicula",
+  "movieDetailRecommendationFailure": "No puede cargar recomendaciones de peliculas",
+  "movieListDiscoverFailure": "No puede cargar lista de peliculas por descubrir",
+  "movieListPopularFailure": "No puede cargar lista de películas populares",
+  "movieListTopRatedFailure": "No puede cargar lista de películas mejor calificadas"
+}

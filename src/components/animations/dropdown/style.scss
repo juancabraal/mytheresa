@@ -1,0 +1,43 @@
+@use "../../../theme/metrics.scss";
+
+.dropdown-menu {
+  .dropdown-list {
+    display: flex;
+    flex-direction: column;
+    gap: metrics.spacing(2);
+    background: white;
+
+    .dropdown-list-item {
+      color: black;
+      display: block;
+    }
+  
+    &, .dropdown-list-item {
+      list-style: none;
+      margin: 0;
+      padding: metrics.spacing(1, 2);
+    }
+  }
+
+  .dropdown-button {
+    border: 1px solid white !important;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: metrics.spacing(1);
+
+    path {
+      fill: white;
+    }
+  }
+}

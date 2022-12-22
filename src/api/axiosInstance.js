@@ -6,6 +6,9 @@ import { applyNotificationInterceptor } from "./notificationInterceptor";
 export const axios = Axios.create({
   responseType: "json",
   baseURL: "https://api.themoviedb.org/3/",
+  validateStatus: (status) => {
+    return status >= 200 && status < 400;
+  },
 });
 
 applyAuthInterceptor(axios);

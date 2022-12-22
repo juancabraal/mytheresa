@@ -36,6 +36,14 @@
     flex-direction: column;
     align-items: center;
 
+    .wish-button {
+      margin-right: - metrics.spacing(2);
+  
+      .wish-added {
+        color: colors.$FAILURE_COLOR;
+      }
+    }
+
     .movie-post-image {
       height: 50vh;
       
@@ -48,5 +56,18 @@
         max-width: 100%;
       }
     }
+  }
+}
+
+.movie-popular-detail {
+  & h2, p, h4 {
+    font-family: 'Inter', sans-serif;
+  }
+}
+.movie-top-rated-detail {
+  & h2,
+  p,
+  h4 {
+    font-family: 'Poppins', sans-serif;
   }
 }

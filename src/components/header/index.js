@@ -43,7 +43,9 @@ const Header = () => {
                 <Button
                   key={language.key}
                   className="language-option"
-                  onClick={() => i18n.changeLanguage(language.key)}
+                  onClick={() =>
+                    i18n.changeLanguage(language.key.toLowerCase())
+                  }
                 >
                   {isNotSmallDevice ? language.label : language.key}
                 </Button>

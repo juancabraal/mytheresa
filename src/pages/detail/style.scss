@@ -20,7 +20,7 @@
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: metrics.spacing(2);
+      gap: metrics.spacing(1);
 
       li {
         list-style-type: none;
@@ -38,7 +38,7 @@
   .movie-content {
     display: flex;
     flex-direction: column;
-    gap: metrics.spacing(3);
+    gap: metrics.spacing(2);
     width: 100%;
 
     .wish-button {
@@ -52,15 +52,20 @@
     .title {
       @include utils.flexCenterVertical;
       justify-content: space-between;
-      gap: spacing(1);
+      gap: metrics.spacing(1);
       
       h2 {
         margin: 0;
+        font-size: 28px;
       }
     }
 
     .sinopse, .title, .movie-info-list {
       color: white;
+    }
+
+    .sinopse, .comment {
+      line-height: 1.7;
     }
 
     .genre {
@@ -72,7 +77,7 @@
       li {
         padding: metrics.spacing(1);
         border: 1px solid white;
-        border-radius: metrics.spacing(1);
+        border-radius: metrics.$defaultRadius;
         &:last-child {
           margin-right: metrics.spacing(0);
         }
@@ -81,15 +86,22 @@
   }
 }
 
-// .movie-DISCOVER-detail {
-//   & h2, p, h4 {
-//     font-family: 'Inter', sans-serif;
-//   }
-// }
-// .movie-top-rated-detail {
-//   & h2,
-//   p,
-//   h4 {
-//     font-family: 'Poppins', sans-serif;
-//   }
-// }
+.movie-discover-detail {
+  .movie-content {
+    .accordion-title,
+    .genre ul li {
+      border: none;
+    }
+  
+    .genre ul li {
+      padding: 0;
+    }
+  }
+}
+.movie-top-rated-detail {
+  .accordion-title {
+    padding: metrics.spacing(1, 2);
+    border: 1px solid #6B6B6B;
+    border-radius: metrics.$defaultRadius;
+  }
+}

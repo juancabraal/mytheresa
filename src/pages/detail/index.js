@@ -19,6 +19,9 @@ import Carousel from "../../components/carousel";
 import { useDimensions } from "../../utils/hooks/useDimensions";
 import MovieInfoList from "./infoList";
 import Loading from "../../components/loading";
+import DiscoverAnimations from "../../theme/animations/discover";
+import TopRatedAnimations from "../../theme/animations/topRated";
+import TrendingAnimations from "../../theme/animations/trending";
 
 import "../home/style.scss";
 import "./style.scss";
@@ -30,9 +33,14 @@ const DetailPage = () => {
   const { category, id } = useParams();
   const navigate = useNavigate();
   const [windowWidth] = useDimensions();
-
-  const isMobile = windowWidth <= 1024;
   const languageQuery = `language=${i18n.resolvedLanguage}`;
+  const selectedCategory = String(category).toUpperCase();
+
+  useEffect(() => {
+    if (!Object.keys(CATEGORIES).includes(selectedCategory)) {
+      navigate(getApplicationRoute("/"));
+    }
+  }, [category]);
 
   const { data: response, isLoading } = useSWR(
     `movie/${id}?${languageQuery}`,
@@ -43,13 +51,13 @@ const DetailPage = () => {
     return response?.data || {};
   }, [response]);
 
-  useEffect(() => {
-    if (!Object.keys(CATEGORIES).includes(String(category).toUpperCase())) {
-      navigate(getApplicationRoute("/"));
-    }
-  }, [category]);
-
+  const isMobile = windowWidth <= 1024;
   const isOnList = isItemInList(movieDetail.id);
+  const ANIMATIONS = {
+    DISCOVER: DiscoverAnimations,
+    TRENDING: TrendingAnimations,
+    "TOP-RATED": TopRatedAnimations,
+  };
 
   return (
     <AnimatePresence>
@@ -61,6 +69,7 @@ const DetailPage = () => {
             {!isMobile && (
               <FadeUp
                 animationKey="Poster"
+                variants={ANIMATIONS[selectedCategory]}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
                 <MoviePoster posterUrl={movieDetail.poster_path} />
@@ -69,6 +78,7 @@ const DetailPage = () => {
             <div className="movie-content">
               <FadeUp
                 animationKey="Title"
+                variants={ANIMATIONS[selectedCategory]}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <div className="title">
@@ -93,6 +103,7 @@ const DetailPage = () => {
               </FadeUp>
               <FadeUp
                 animationKey="Genre"
+                variants={ANIMATIONS[selectedCategory]}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
                 <div className="movie-info-list genre">
@@ -105,6 +116,7 @@ const DetailPage = () => {
               {isMobile && (
                 <FadeUp
                   animationKey="Poster"
+                  variants={ANIMATIONS[selectedCategory]}
                   transition={{ duration: 0.5, delay: 0.5 }}
                 >
                   <MoviePoster posterUrl={movieDetail.poster_path} />
@@ -112,6 +124,7 @@ const DetailPage = () => {
               )}
               <FadeUp
                 animationKey="sinopse"
+                variants={ANIMATIONS[selectedCategory]}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <div className="sinopse">
@@ -122,6 +135,7 @@ const DetailPage = () => {
               </FadeUp>
               <FadeUp
                 animationKey="Creators"
+                variants={ANIMATIONS[selectedCategory]}
                 transition={{ duration: 0.5, delay: 0.7 }}
               >
                 <div className="movie-info-list">
@@ -144,6 +158,7 @@ const DetailPage = () => {
               </FadeUp>
               <FadeUp
                 animationKey="Stars"
+                variants={ANIMATIONS[selectedCategory]}
                 transition={{ duration: 0.5, delay: 0.8 }}
               >
                 <div className="movie-info-list">
@@ -169,6 +184,7 @@ const DetailPage = () => {
           <div className="movie-content">
             <FadeUp
               animationKey="reviews"
+              variants={ANIMATIONS[selectedCategory]}
               transition={{ duration: 0.5, delay: 0.9 }}
             >
               <div className="movie-info-list review">
@@ -198,6 +214,7 @@ const DetailPage = () => {
             </FadeUp>
             <FadeUp
               animationKey="recommendations"
+              variants={ANIMATIONS[selectedCategory]}
               transition={{ duration: 0.5, delay: 1 }}
             >
               <div className="movie-list-section">

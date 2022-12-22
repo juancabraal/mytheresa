@@ -3,39 +3,43 @@
 @use "../../theme/metrics.scss";
 
 .movie-detail {
-  position: relative;
-  height: 100%;
-  background: rgb(0, 0, 0);
-  overflow-y: auto;
+  &, .movie-principal-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: metrics.spacing(3);
+  }
 
-  .movie-backdrop-image {
-    height: 50vh;
-    height: calc(var(--vh, 1vh) * 50);
-    width: 100%;
-    position: relative;
-    &:before {
-      content: " ";
+  .movie-principal-info-container {
+    flex-direction: row;
+  }
+
+  .movie-info-list {
+    color: white;
+    ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: metrics.spacing(2);
+
+      li {
+        list-style-type: none;
+      }
+    }
+  }
+
+  .movie-post-image {
+    flex: 1;
+    img {
       width: 100%;
-      height: 100%;
-      position: absolute;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
     }
   }
 
   .movie-content {
-    @include metrics.defaultContainerPaddingTop;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 2;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: metrics.spacing(3);
+    width: 100%;
 
     .wish-button {
       margin-right: - metrics.spacing(2);
@@ -45,31 +49,46 @@
       }
     }
 
-    .movie-post-image {
-      height: 50vh;
-      height: calc(var(--vh, 1vh) * 50);
+    .title {
+      @include utils.flexCenterVertical;
+      justify-content: space-between;
+      gap: spacing(1);
       
-      @media screen and (max-width: 487px) {
-        margin: metrics.spacing(0, 4);
+      h2 {
+        margin: 0;
       }
+    }
 
-      img {
-        max-height: 100%;
-        max-width: 100%;
+    .sinopse, .title, .movie-info-list {
+      color: white;
+    }
+
+    .genre {
+      ul {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+      li {
+        padding: metrics.spacing(1);
+        border: 1px solid white;
+        border-radius: metrics.spacing(1);
+        &:last-child {
+          margin-right: metrics.spacing(0);
+        }
       }
     }
   }
 }
 
-.movie-popular-detail {
-  & h2, p, h4 {
-    font-family: 'Inter', sans-serif;
-  }
-}
-.movie-top-rated-detail {
-  & h2,
-  p,
-  h4 {
-    font-family: 'Poppins', sans-serif;
-  }
-}
+// .movie-DISCOVER-detail {
+//   & h2, p, h4 {
+//     font-family: 'Inter', sans-serif;
+//   }
+// }
+// .movie-top-rated-detail {
+//   & h2,
+//   p,
+//   h4 {
+//     font-family: 'Poppins', sans-serif;
+//   }
+// }

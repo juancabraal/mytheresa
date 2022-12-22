@@ -8,65 +8,63 @@
 }
 
 .header-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 10;
+  background: rgb(0, 0, 0);
 
   .header-content {
     @include utils.flexCenterVertical;
-    padding: metrics.spacing(2, 0);
-    background: rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
-    position: relative;
+    padding: metrics.spacing(2, 3);
+    justify-content: space-between;
   
     & h2,
     img,
     button {
+      margin: 0;
       color: white;
     }
   
     .logo-container {
-      flex: 1;
       & a {
+        padding-left: 0;
         @include utils.flexCenterVertical;
-          gap: metrics.spacing(1);
-        
-          @include web-navigation {
-            padding-left: metrics.spacing(3);
-          }
-        
-          img {
-            width: 30px;
-          }
+
+        gap: metrics.spacing(1);      
+
+        img {
+          width: 30px;
+        }
       }
     }
-  
-    .menu-mobile-btn {
-      margin-right: metrics.spacing(1);
-      padding-top: metrics.spacing(2.1);
-    }
 
-    & .menu-mobile-btn, .logo-container {
-      z-index: 2;
-    }
-  
-    .action-buttons {
+    .option-buttons {
       @include utils.flexCenterVertical;
-      gap: spacing(2);
-      z-index: 1;
-  
-      .navigation-mobile {
-        position: absolute;
+      position: relative;
+      padding-right: 128px;
+
+      .dropdown-menu {
         width: 100%;
-        top: 0;
-        left: 0;
+      }
+
+      @media screen and (max-width: 455px) {
+        padding-right: 104px;
+      }
+
+      .dropdown-menu-container {
+        position: absolute;
         right: 0;
+        top: 0;
+        
+        .language-option {
+          color: black;
+          padding: 0;
+        }
+      }
+
+      .dropdown-menu-container:has(.dropdown-open) {
+        z-index: 2 !important;
       }
     }
 
-    & a, .action-buttons a, .action-buttons button {
+    & a, .action-buttons a, .option-buttons button {
       &:hover {
         background-color: transparent;
       }

@@ -1,11 +1,15 @@
-@import "../../theme/media-queries.scss";
+@use "../../theme/metrics.scss";
+@use "../../theme/media-queries.scss";
 
 .page-wrapper {
-  max-width: $lg;
   width: 100%;
-  position: relative;
 
-  &, .page-content {
-    height: 100%;
+  .page-content, .header-content {
+    max-width: media-queries.$lg;
+    margin: 0 auto;
+  }
+
+  .page-content {
+    padding: metrics.spacing(3);
   }
 }

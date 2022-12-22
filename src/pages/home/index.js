@@ -1,39 +1,39 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 import Carousel from "../../components/carousel";
 import CATEGORIES from "../../consts/categories";
 import "./style.scss";
 
 const HomePage = () => {
-  const { search: urlSearch } = useLocation();
+  const { t, i18n } = useTranslation();
 
-  useEffect(() => {
-    const slideSection = urlSearch.slice(1).toUpperCase();
-    if (
-      urlSearch &&
-      urlSearch.startsWith("?") &&
-      Object.keys(CATEGORIES).indexOf(slideSection) >= 0
-    ) {
-      const slideElement = document.getElementById(slideSection);
-
-      if (slideElement) {
-        slideElement.scrollIntoView({
-          behavior: "smooth",
-        });
-      }
-    }
-  }, [urlSearch]);
+  const languageQuery = `language=${i18n.resolvedLanguage}`;
 
   return (
     <div className="home-container">
-      <div className="movie-section" id={CATEGORIES.POPULAR}>
-        <Carousel category={CATEGORIES.POPULAR} />
+      <div className="movie-big-section">
+        <Carousel
+          category={CATEGORIES.DISCOVER.toLowerCase()}
+          endpoint={`discover/movie?${languageQuery}`}
+          isSingle
+          itemCount={5}
+        />
       </div>
-      <div className="movie-section" id={CATEGORIES["TOP-RATED"]}>
-        <Carousel category={CATEGORIES["TOP-RATED"]} />
+      <div className="movie-list-section">
+        <div className="list-title">{t("homeSectionTrending")}</div>
+        <Carousel
+          category={CATEGORIES.TRENDING.toLowerCase()}
+          endpoint={`movie/popular?${languageQuery}`}
+          itemCount={20}
+        />
       </div>
-      <div className="movie-section" id={CATEGORIES.UPCOMING}>
-        <Carousel category={CATEGORIES.UPCOMING} />
+      <div className="movie-list-section">
+        <div className="list-title">{t("homeSectionTopRated")}</div>
+        <Carousel
+          category={CATEGORIES["TOP-RATED"].toLowerCase()}
+          endpoint={`movie/top_rated?${languageQuery}`}
+          itemCount={20}
+        />
       </div>
     </div>
   );

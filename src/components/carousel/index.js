@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import useSWRInfinite from "swr/infinite";
 import { Navigation, Pagination, EffectCreative } from "swiper";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import { axiosFetcher } from "../../api/fetchers";
 
@@ -13,9 +13,6 @@ import "./style.scss";
 import MovieSlide from "./MovieSlide";
 
 const Carousel = ({ category }) => {
-  const swiper = useSwiper();
-  console.log("swiper", swiper);
-
   const {
     data: response,
     isValidating,

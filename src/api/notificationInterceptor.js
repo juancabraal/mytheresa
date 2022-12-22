@@ -3,6 +3,7 @@ import { getErrorMessage } from "../utils/errors";
 
 export const applyNotificationInterceptor = (axiosInstance) => {
   axiosInstance.interceptors.response.use(undefined, (error) => {
+    console.log("error", error);
     const config = error.config;
     const failureNotification = config.failureNotification;
     if (failureNotification) {

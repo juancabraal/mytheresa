@@ -1,0 +1,18 @@
+@use "../../../theme/metrics.scss";
+
+.accordion-title {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  padding: metrics.spacing(1, 0);
+  border-bottom: 1px solid #6B6B6B;
+  font-weight: 700;
+  margin-bottom: metrics.spacing(2);
+  & path {
+    fill: white;
+  }
+}

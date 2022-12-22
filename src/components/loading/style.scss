@@ -1,9 +1,8 @@
-@use "../../theme/utils.scss";
 @use "../../theme/metrics.scss";
 
 .loading {
   padding: metrics.spacing(2);
-  max-width: 300px;
+  max-width: 100px;
   text-align: center;
   margin: 0 auto;
 }

@@ -1,5 +1,5 @@
 @use "../../theme/utils.scss";
-@import "../../theme/metrics.scss";
+@use "../../theme/metrics.scss";
 
 @mixin selectedButton {
   background-color: rgba($color: #fff, $alpha: 0.1);
@@ -8,9 +8,9 @@
 .button {
   text-decoration: none;
   border: none;
-  padding: spacing(1, 3);
+  padding: metrics.spacing(1, 3);
   cursor: pointer;
-  border-radius: $radius;
+  border-radius: metrics.$defaultRadius;
   color: #fff;
 
   &:hover {

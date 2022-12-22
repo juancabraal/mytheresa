@@ -23,7 +23,7 @@
     & .swiper,
     .movie-item {
       overflow: hidden;
-      border-radius: metrics.spacing(2);
+      border-radius: metrics.$defaultRadius;
     }
   }
 

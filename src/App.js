@@ -6,6 +6,8 @@ import MainRouter from "./router";
 import { normalizeWindowHeight } from "./utils/heightDimension";
 import { composeWrappers } from "./utils/reactUtils";
 
+import "./i18n";
+
 const App = () => {
   const Providers = useMemo(() => {
     return composeWrappers([BrowserRouter, {}], [WishListProvider, {}]);

@@ -1,73 +1,110 @@
 import { useMemo } from "react";
-import useSWRInfinite from "swr/infinite";
-import { Navigation, Pagination, EffectCreative } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+import useSWR from "swr";
+import { useNavigate } from "react-router-dom";
 
 import { axiosFetcher } from "../../api/fetchers";
+import { getStarsRealValue } from "../../utils/number";
+import { getApplicationRoute } from "../../utils/route";
+import StarRatings from "react-star-ratings";
+import { formatDate } from "../../utils/date";
+import Button from "../button";
+import CarouselMultipleItens from "./multiple";
+import CarouselSingleItem from "./single";
+import Loading from "../loading";
 
-import "swiper/css";
-import "swiper/css/effect-creative";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "./style.scss";
-import MovieSlide from "./MovieSlide";
-
-const Carousel = ({ category }) => {
-  const {
-    data: response,
-    isValidating,
-    size,
-    setSize,
-  } = useSWRInfinite(
-    (index) =>
-      `movie/${String(category)
-        .replace("-", "_")
-        .toLowerCase()}?${new URLSearchParams({
-        page: index + 1,
-      })}`,
-    axiosFetcher
-  );
-
-  const movieList = useMemo(() => {
-    return response
-      ? [].concat(...response.map((value) => value.data.results))
-      : [];
-  }, [response]);
+const CarouselSelector = ({ isSingle, movieList, onItemClicked }) => {
+  if (isSingle) {
+    return (
+      <CarouselSingleItem>
+        {movieList.map((movie) => (
+          <Button
+            key={movie.id}
+            className="movie-item"
+            style={{
+              backgroundImage: `url("http://image.tmdb.org/t/p/w500/${movie.poster_path}")`,
+            }}
+            onClick={() => onItemClicked(movie)}
+            movieid={movie.id}
+          >
+            <div className="movie-title">{movie.title}</div>
+          </Button>
+        ))}
+      </CarouselSingleItem>
+    );
+  }
 
   return (
-    <Swiper
-      slidesPerView={1}
-      pagination={{
-        clickable: true,
-      }}
-      navigation={true}
-      modules={[Pagination, Navigation, EffectCreative]}
-      grabCursor={true}
-      effect={"creative"}
-      creativeEffect={{
-        prev: {
-          shadow: true,
-          translate: [0, 0, -400],
-        },
-        next: {
-          translate: ["100%", 0, 0],
-        },
-      }}
-      onSlideChange={(swiper) => {
-        if (swiper.activeIndex === movieList.length - 2 && !isValidating) {
-          setSize(size + 1);
-        }
-      }}
-      className="movie-slider"
-    >
-      {movieList.map((value) => (
-        <SwiperSlide key={value.id}>
-          {({ isActive }) => (
-            <MovieSlide movie={value} category={category} isActive={isActive} />
-          )}
-        </SwiperSlide>
+    <CarouselMultipleItens>
+      {movieList.map((movie) => (
+        <Button
+          key={movie.id}
+          className="movie-item"
+          style={{
+            backgroundImage: `url("http://image.tmdb.org/t/p/w500/${movie.poster_path}")`,
+          }}
+          onClick={() => onItemClicked(movie)}
+          movieid={movie.id}
+        >
+          <div className="movie-info">
+            <div className="title">
+              <h4>{movie.title || movie.name}</h4>
+            </div>
+            <div className="date-star-rating">
+              <p>{formatDate(movie.release_date || movie.first_air_date)}</p>
+              <StarRatings
+                rating={getStarsRealValue(movie.vote_average)}
+                numberOfStars={5}
+                starSpacing="1px"
+                starRatedColor="white"
+                starEmptyColor="rgba(255,255,255, 0.5)"
+                starDimension="13px"
+              />
+            </div>
+          </div>
+        </Button>
       ))}
-    </Swiper>
+    </CarouselMultipleItens>
+  );
+};
+
+const Carousel = ({
+  category,
+  endpoint,
+  customMovieList,
+  isSingle = false,
+  itemCount,
+}) => {
+  const navigate = useNavigate();
+  const { data: response, isValidating } = useSWR(endpoint, axiosFetcher);
+
+  const movieList = useMemo(() => {
+    const arrayList = Array.from(
+      response?.data?.results || customMovieList || []
+    );
+
+    if (itemCount) return arrayList.slice(0, itemCount);
+
+    return arrayList;
+  }, [response, customMovieList]);
+
+  const onItemClicked = (movie) => {
+    navigate(
+      getApplicationRoute(`/detail/${category || movie.category}/${movie.id}`)
+    );
+  };
+
+  return (
+    <div>
+      {isValidating ? (
+        <Loading />
+      ) : (
+        <CarouselSelector
+          isSingle={isSingle}
+          movieList={movieList}
+          onItemClicked={onItemClicked}
+        />
+      )}
+    </div>
   );
 };
 

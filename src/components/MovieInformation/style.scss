@@ -20,14 +20,6 @@
     gap: spacing(1);
   }
 
-  .wish-button {
-    margin-right: - metrics.spacing(2);
-
-    .wish-added {
-      color: colors.$FAILURE_COLOR;
-    }
-  }
-
   .list-info {
     margin: 0;
     padding: 0;

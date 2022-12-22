@@ -1,54 +1,29 @@
-import { useContext } from "react";
 import { FiCalendar } from "react-icons/fi";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
 import StarRatings from "react-star-ratings";
 
 import { formatDate } from "../../utils/date";
 import { getStarsRealValue, isWhatPercentOf } from "../../utils/number";
-import Button from "../../components/button";
 import { convertToCurrency } from "../../utils/converter";
-import { WishListContext } from "../../context/WishListContext";
 
 import "./style.scss";
 
 const MovieInformation = ({
   movieDetail,
-  category,
   showDescription = true,
   showRevenue = true,
   showExternalSite = true,
   movieAction,
 }) => {
-  const { addItemToList, removeItemFromList, isItemInList } =
-    useContext(WishListContext);
-
   const revenuePercent = isWhatPercentOf(
     movieDetail.budget,
     movieDetail.revenue
   ).toFixed(2);
 
-  const isOnList = isItemInList(movieDetail.id);
-
   return (
     <div className="movie-information">
       <div className="title">
         <h2>{movieDetail.title}</h2>
-        {movieAction || (
-          <Button
-            onClick={() =>
-              isOnList
-                ? removeItemFromList(movieDetail.id)
-                : addItemToList(movieDetail, category)
-            }
-            className="wish-button"
-          >
-            {isOnList ? (
-              <FaHeart fontSize={25} className="wish-added" />
-            ) : (
-              <FaRegHeart fontSize={25} className="wish-add" />
-            )}
-          </Button>
-        )}
+        {movieAction}
       </div>
       <ul className="list-info">
         <li className="date">

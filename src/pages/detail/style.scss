@@ -68,6 +68,23 @@
       line-height: 1.7;
     }
 
+    .review {
+      ul {
+        gap: metrics.spacing(3);
+      }
+      .review-item {
+        display: flex;
+        flex-direction: column;
+        gap: metrics.spacing(1);
+    
+        .title h4 {
+          margin: 0;
+          font-weight: bold;
+          font-size: 18px;
+        }
+      }
+    }
+
     .genre {
       ul {
         flex-direction: row;

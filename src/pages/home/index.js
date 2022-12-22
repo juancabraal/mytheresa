@@ -3,8 +3,10 @@ import { useLocation } from "react-router-dom";
 import Carousel from "../../components/carousel";
 import CATEGORIES from "../../consts/categories";
 import "./style.scss";
+
 const HomePage = () => {
   const { search: urlSearch } = useLocation();
+
   useEffect(() => {
     const slideSection = urlSearch.slice(1).toUpperCase();
     if (
@@ -21,13 +23,14 @@ const HomePage = () => {
       }
     }
   }, [urlSearch]);
+
   return (
     <div className="home-container">
       <div className="movie-section" id={CATEGORIES.POPULAR}>
         <Carousel category={CATEGORIES.POPULAR} />
       </div>
-      <div className="movie-section" id={CATEGORIES.TOP_RATED}>
-        <Carousel category={CATEGORIES.TOP_RATED} />
+      <div className="movie-section" id={CATEGORIES["TOP-RATED"]}>
+        <Carousel category={CATEGORIES["TOP-RATED"]} />
       </div>
       <div className="movie-section" id={CATEGORIES.UPCOMING}>
         <Carousel category={CATEGORIES.UPCOMING} />

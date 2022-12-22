@@ -82,7 +82,7 @@ const Header = () => {
                   className={selectedSection === value ? "button-active" : ""}
                   onClick={setIsMenuOpen}
                 >
-                  {value.replace("_", " ")}
+                  {value.replace("-", " ")}
                 </Button>
               ))}
             </Menu>

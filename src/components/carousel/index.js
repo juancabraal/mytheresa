@@ -20,7 +20,9 @@ const Carousel = ({ category }) => {
     setSize,
   } = useSWRInfinite(
     (index) =>
-      `movie/${String(category).toLowerCase()}?${new URLSearchParams({
+      `movie/${String(category)
+        .replace("-", "_")
+        .toLowerCase()}?${new URLSearchParams({
         page: index + 1,
       })}`,
     axiosFetcher

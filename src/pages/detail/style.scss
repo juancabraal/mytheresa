@@ -67,6 +67,7 @@
       ul {
         flex-direction: row;
         align-items: flex-start;
+        flex-wrap: wrap;
       }
       li {
         padding: metrics.spacing(1);

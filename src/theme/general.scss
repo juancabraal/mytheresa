@@ -10,11 +10,11 @@ body,
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
-  background-color: $DEFAULT_LIGHT_COLOR;
+  background-color: $BACKGROUND_COLOR;
   margin: 0px;
   padding: 0px;
   overflow-x: hidden;

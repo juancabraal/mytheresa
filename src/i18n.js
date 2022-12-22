@@ -22,7 +22,7 @@ i18n
     },
     returnEmptyString: false,
     backend: {
-      loadPath: `/locales/{{lng}}/{{ns}}.json`,
+      loadPath: `${process.env.APP_URL}locales/{{lng}}/{{ns}}.json`,
     },
   });
 

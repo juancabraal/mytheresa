@@ -4,6 +4,7 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const webpack = require("webpack");
 const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const config = require("./webpack.config.js");
 
@@ -27,6 +28,11 @@ module.exports = merge(config(), {
     new Dotenv({
       path: "./.env.production",
       ignoreStub: true,
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: "public/locales", to: "locales/" }, //to the dist root directory
+      ],
     }),
   ],
   optimization: {

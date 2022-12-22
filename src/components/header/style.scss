@@ -29,15 +29,17 @@
   
     .logo-container {
       flex: 1;
-      @include utils.flexCenterVertical;
-      gap: metrics.spacing(1);
-
-      @include web-navigation {
-        padding-left: metrics.spacing(3);
-      }
-  
-      img {
-        width: 30px;
+      & a {
+        @include utils.flexCenterVertical;
+          gap: metrics.spacing(1);
+        
+          @include web-navigation {
+            padding-left: metrics.spacing(3);
+          }
+        
+          img {
+            width: 30px;
+          }
       }
     }
   
@@ -61,6 +63,12 @@
         top: 0;
         left: 0;
         right: 0;
+      }
+    }
+
+    & a, .action-buttons a, .action-buttons button {
+      &:hover {
+        background-color: transparent;
       }
     }
   }

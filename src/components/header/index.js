@@ -67,8 +67,10 @@ const Header = () => {
           </Button>
         )}
         <div className="logo-container">
-          <img src={MovieLogo} />
-          <h2>My Movies</h2>
+          <Button Component={Link} to={getApplicationRoute()}>
+            <img src={MovieLogo} />
+            <h2>My Movies</h2>
+          </Button>
         </div>
         <div className="action-buttons">
           <div className={`navigation ${isMobile ? "navigation-mobile" : ""}`}>

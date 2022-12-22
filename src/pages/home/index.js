@@ -17,6 +17,7 @@ const HomePage = () => {
           endpoint={`discover/movie?${languageQuery}`}
           isSingle
           itemCount={5}
+          errorMessage={t("movieListDiscoverFailure")}
         />
       </div>
       <div className="movie-list-section">
@@ -25,6 +26,7 @@ const HomePage = () => {
           category={CATEGORIES.TRENDING.toLowerCase()}
           endpoint={`movie/popular?${languageQuery}`}
           itemCount={20}
+          errorMessage={t("movieListPopularFailure")}
         />
       </div>
       <div className="movie-list-section">
@@ -33,6 +35,7 @@ const HomePage = () => {
           category={CATEGORIES["TOP-RATED"].toLowerCase()}
           endpoint={`movie/top_rated?${languageQuery}`}
           itemCount={20}
+          errorMessage={t("movieListTopRatedFailure")}
         />
       </div>
     </div>

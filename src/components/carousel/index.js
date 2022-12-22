@@ -73,9 +73,13 @@ const Carousel = ({
   customMovieList,
   isSingle = false,
   itemCount,
+  errorMessage,
 }) => {
   const navigate = useNavigate();
-  const { data: response, isValidating } = useSWR(endpoint, axiosFetcher);
+  const { data: response, isValidating } = useSWR(
+    endpoint,
+    axiosFetcher({ message: errorMessage })
+  );
 
   const movieList = useMemo(() => {
     const arrayList = Array.from(

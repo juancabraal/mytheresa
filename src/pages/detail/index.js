@@ -36,7 +36,7 @@ const DetailPage = () => {
 
   const { data: response, isLoading } = useSWR(
     `movie/${id}?${languageQuery}`,
-    axiosFetcher
+    axiosFetcher({ message: t("movieDetailFailure") })
   );
 
   const movieDetail = useMemo(() => {
@@ -115,7 +115,9 @@ const DetailPage = () => {
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <div className="sinopse">
-                  <Accordion title="Sinopse">{movieDetail.overview}</Accordion>
+                  <Accordion title={t("movieDetailSinopse")}>
+                    {movieDetail.overview}
+                  </Accordion>
                 </div>
               </FadeUp>
               <FadeUp
@@ -123,9 +125,10 @@ const DetailPage = () => {
                 transition={{ duration: 0.5, delay: 0.7 }}
               >
                 <div className="movie-info-list">
-                  <Accordion title="Creators">
+                  <Accordion title={t("movieDetailCreators")}>
                     <MovieInfos
                       endpoint={`/movie/${id}/credits?${languageQuery}`}
+                      errorMessage={t("movieDetailCreatorsFailure")}
                     >
                       {({ crew }) => (
                         <MovieInfoList
@@ -144,9 +147,10 @@ const DetailPage = () => {
                 transition={{ duration: 0.5, delay: 0.8 }}
               >
                 <div className="movie-info-list">
-                  <Accordion title="Stars">
+                  <Accordion title={t("movieDetailStars")}>
                     <MovieInfos
                       endpoint={`/movie/${id}/credits?${languageQuery}`}
+                      errorMessage={t("movieDetailStarsFailure")}
                     >
                       {({ cast }) => (
                         <MovieInfoList
@@ -168,9 +172,10 @@ const DetailPage = () => {
               transition={{ duration: 0.5, delay: 0.9 }}
             >
               <div className="movie-info-list review">
-                <Accordion title="Reviews">
+                <Accordion title={t("movieDetailReviews")}>
                   <MovieInfos
                     endpoint={`/movie/${id}/reviews?${languageQuery}`}
+                    errorMessage={t("movieDetailReviewersFailure")}
                   >
                     {({ results }) => (
                       <MovieInfoList
@@ -196,10 +201,13 @@ const DetailPage = () => {
               transition={{ duration: 0.5, delay: 1 }}
             >
               <div className="movie-list-section">
-                <div className="list-title">{t("movieRecommendations")}</div>
+                <div className="list-title">
+                  {t("movieDetailRecommendations")}
+                </div>
                 <MovieInfos
                   endpoint={`/movie/${id}/recommendations?${languageQuery}`}
                   defaultReturn={[]}
+                  errorMessage={t("movieDetailRecommendationFailure")}
                 >
                   {({ results }) => (
                     <Carousel

@@ -13,7 +13,7 @@ const variants = {
   zoom: { scale: [0.5, 1, 1.5, 1] },
 };
 
-const Cart = () => {
+const Heart = () => {
   const navigate = useNavigate();
   const controls = useAnimation();
   const { wishList } = useContext(WishListContext);
@@ -25,16 +25,16 @@ const Cart = () => {
   }, [wishList]);
 
   return (
-    <div className="cart-wrapper">
+    <div className="heart-wrapper">
       <Button
-        className="cart-button-action"
+        className="heart-button-action"
         onClick={() => navigate(getApplicationRoute("/wish-list"))}
       >
         <FaHeart fontSize={25} />
         <AnimatePresence>
           {wishList.length > 0 && (
             <motion.div
-              className="cart-badge"
+              className="heart-badge"
               variants={variants}
               animate={controls}
               exit={{
@@ -51,4 +51,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Heart;

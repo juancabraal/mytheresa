@@ -1,12 +1,12 @@
 @use "../../theme/colors.scss";
-.cart-wrapper {
-  .cart-button-action {
+.heart-wrapper {
+  .heart-button-action {
     position: relative;
     img {
       width: 30px;
     }
 
-    .cart-badge {
+    .heart-badge {
       position: absolute;
       border-radius: 100%;
       padding: 4px 7px;

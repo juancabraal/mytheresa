@@ -1,7 +1,0 @@
-@use "../../theme/utils.scss";
-@use "../../theme/metrics.scss";
-.not-found-container {
-  @include metrics.defaultContainerPaddingTop;
-  @include utils.flexCenterVertical;
-  flex-direction: column;
-}

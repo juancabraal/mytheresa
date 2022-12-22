@@ -7,7 +7,6 @@ import { getApplicationRoute } from "../utils/route";
 const HomePage = lazy(() => import("../pages/home"));
 const DetailPage = lazy(() => import("../pages/detail"));
 const WishPage = lazy(() => import("../pages/wish"));
-const NotFoundPage = lazy(() => import("../pages/notFound"));
 
 const MainRouter = () => {
   return (
@@ -23,7 +22,6 @@ const MainRouter = () => {
             path={getApplicationRoute("/wish-list")}
             element={<WishPage />}
           />
-          <Route path={`*`} element={<NotFoundPage />} />
         </Routes>
       </Suspense>
     </PageWrapper>

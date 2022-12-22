@@ -10,6 +10,7 @@
 
   .movie-backdrop-image {
     height: 50vh;
+    height: calc(var(--vh, 1vh) * 50);
     width: 100%;
     position: relative;
     &:before {
@@ -46,6 +47,7 @@
 
     .movie-post-image {
       height: 50vh;
+      height: calc(var(--vh, 1vh) * 50);
       
       @media screen and (max-width: 487px) {
         margin: metrics.spacing(0, 4);

@@ -12,11 +12,11 @@ import CarouselMultipleItens from "./multiple";
 import CarouselSingleItem from "./single";
 import Loading from "../loading";
 
-const CarouselSelector = ({ isSingle, movieList, onItemClicked }) => {
+const CarouselSelector = ({ isSingle, movieList, onItemClicked, category }) => {
   if (isSingle) {
     return (
       <CarouselSingleItem>
-        {movieList.map((movie) => (
+        {movieList.map((movie, index) => (
           <Button
             key={movie.id}
             className="movie-item"
@@ -25,6 +25,7 @@ const CarouselSelector = ({ isSingle, movieList, onItemClicked }) => {
             }}
             onClick={() => onItemClicked(movie)}
             movieid={movie.id}
+            data-testid={`movie-${category || movie.category}-${index}`}
           >
             <div className="movie-title">{movie.title}</div>
           </Button>
@@ -35,7 +36,7 @@ const CarouselSelector = ({ isSingle, movieList, onItemClicked }) => {
 
   return (
     <CarouselMultipleItens>
-      {movieList.map((movie) => (
+      {movieList.map((movie, index) => (
         <Button
           key={movie.id}
           className="movie-item"
@@ -44,6 +45,7 @@ const CarouselSelector = ({ isSingle, movieList, onItemClicked }) => {
           }}
           onClick={() => onItemClicked(movie)}
           movieid={movie.id}
+          data-testid={`movie-${category || movie.category}-${index}`}
         >
           <div className="movie-info">
             <div className="title">
@@ -106,6 +108,7 @@ const Carousel = ({
           isSingle={isSingle}
           movieList={movieList}
           onItemClicked={onItemClicked}
+          category={category}
         />
       )}
     </div>

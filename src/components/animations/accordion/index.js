@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import "./style.scss";
 
-const Accordion = ({ title, children }) => {
+const Accordion = ({ title, children, ...rest }) => {
   const [isOpen, setOpen] = useState(true);
 
   return (
@@ -13,6 +13,7 @@ const Accordion = ({ title, children }) => {
         onClick={() => setOpen(!isOpen)}
         animate={isOpen ? "open" : "closed"}
         className="accordion-title"
+        {...rest}
       >
         {title}
         <motion.div
@@ -40,6 +41,7 @@ const Accordion = ({ title, children }) => {
               collapsed: { opacity: 0, height: 0 },
             }}
             transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
+            className="accordion-content"
           >
             {children}
           </motion.section>

@@ -12,7 +12,7 @@ const itemVariants = {
   closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
 };
 
-const Dropdown = ({ selected, children }) => {
+const Dropdown = ({ selected, children, ...rest }) => {
   const [isOpen, setIsOpen] = useState(false);
   const arrayChildren = Children.toArray(children);
 
@@ -21,6 +21,7 @@ const Dropdown = ({ selected, children }) => {
       initial={false}
       animate={isOpen ? "open" : "closed"}
       className={`dropdown-menu ${isOpen ? "dropdown-open" : ""}`}
+      {...rest}
     >
       <motion.button
         whileTap={{ scale: 0.97 }}

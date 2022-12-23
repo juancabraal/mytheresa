@@ -11,7 +11,7 @@ const HomePage = () => {
 
   return (
     <div className="home-container">
-      <div className="movie-big-section">
+      <div className="movie-big-section" id={CATEGORIES.DISCOVER.toLowerCase()}>
         <Carousel
           category={CATEGORIES.DISCOVER.toLowerCase()}
           endpoint={`discover/movie?${languageQuery}`}
@@ -20,7 +20,10 @@ const HomePage = () => {
           errorMessage={t("movieListDiscoverFailure")}
         />
       </div>
-      <div className="movie-list-section">
+      <div
+        className="movie-list-section"
+        id={CATEGORIES.TRENDING.toLowerCase()}
+      >
         <div className="list-title">{t("homeSectionTrending")}</div>
         <Carousel
           category={CATEGORIES.TRENDING.toLowerCase()}
@@ -29,7 +32,10 @@ const HomePage = () => {
           errorMessage={t("movieListPopularFailure")}
         />
       </div>
-      <div className="movie-list-section">
+      <div
+        className="movie-list-section"
+        id={CATEGORIES["TOP-RATED"].toLowerCase()}
+      >
         <div className="list-title">{t("homeSectionTopRated")}</div>
         <Carousel
           category={CATEGORIES["TOP-RATED"].toLowerCase()}

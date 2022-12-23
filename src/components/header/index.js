@@ -25,7 +25,11 @@ const Header = () => {
     <div className="header-container">
       <div className="header-content">
         <div className="logo-container">
-          <Button Component={Link} to={getApplicationRoute()}>
+          <Button
+            Component={Link}
+            to={getApplicationRoute()}
+            data-testid="go-home-button"
+          >
             <img src={MovieLogo} />
             <h2>My Movies</h2>
           </Button>
@@ -38,6 +42,7 @@ const Header = () => {
                 isNotSmallDevice ? selectedLanguage.label : selectedLanguage.key
               }
               width={150}
+              data-testid="language-dropdown-menu"
             >
               {languages.map((language) => (
                 <Button
@@ -46,6 +51,7 @@ const Header = () => {
                   onClick={() =>
                     i18n.changeLanguage(language.key.toLowerCase())
                   }
+                  data-testid={`language-${language.key.toLowerCase()}`}
                 >
                   {isNotSmallDevice ? language.label : language.key}
                 </Button>

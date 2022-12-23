@@ -29,6 +29,7 @@ const Heart = () => {
       <Button
         className="heart-button-action"
         onClick={() => navigate(getApplicationRoute("/wish-list"))}
+        data-testid="go-wish-list-button"
       >
         <FaHeart fontSize={25} />
         <AnimatePresence>

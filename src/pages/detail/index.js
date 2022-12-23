@@ -90,12 +90,13 @@ const DetailPage = () => {
                           ? removeItemFromList(movieDetail.id)
                           : addItemToList(movieDetail, category)
                       }
-                      className="wish-button"
+                      className={`wish-button ${isOnList ? "wish-added" : ""}`}
+                      data-testid="wish-button-toggle"
                     >
                       {isOnList ? (
-                        <FaHeart fontSize={25} className="wish-added" />
+                        <FaHeart fontSize={25} />
                       ) : (
-                        <FaRegHeart fontSize={25} className="wish-add" />
+                        <FaRegHeart fontSize={25} />
                       )}
                     </Button>
                   </Tap>
@@ -128,7 +129,10 @@ const DetailPage = () => {
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <div className="sinopse">
-                  <Accordion title={t("movieDetailSinopse")}>
+                  <Accordion
+                    title={t("movieDetailSinopse")}
+                    data-testid="sinopse-accordion"
+                  >
                     {movieDetail.overview}
                   </Accordion>
                 </div>
@@ -139,7 +143,10 @@ const DetailPage = () => {
                 transition={{ duration: 0.5, delay: 0.7 }}
               >
                 <div className="movie-info-list">
-                  <Accordion title={t("movieDetailCreators")}>
+                  <Accordion
+                    title={t("movieDetailCreators")}
+                    data-testid="creators-accordion"
+                  >
                     <MovieInfos
                       endpoint={`/movie/${id}/credits?${languageQuery}`}
                       errorMessage={t("movieDetailCreatorsFailure")}
@@ -162,7 +169,10 @@ const DetailPage = () => {
                 transition={{ duration: 0.5, delay: 0.8 }}
               >
                 <div className="movie-info-list">
-                  <Accordion title={t("movieDetailStars")}>
+                  <Accordion
+                    title={t("movieDetailStars")}
+                    data-testid="crew-accordion"
+                  >
                     <MovieInfos
                       endpoint={`/movie/${id}/credits?${languageQuery}`}
                       errorMessage={t("movieDetailStarsFailure")}
@@ -188,7 +198,10 @@ const DetailPage = () => {
               transition={{ duration: 0.5, delay: 0.9 }}
             >
               <div className="movie-info-list review">
-                <Accordion title={t("movieDetailReviews")}>
+                <Accordion
+                  title={t("movieDetailReviews")}
+                  data-testid="reviewers-accordion"
+                >
                   <MovieInfos
                     endpoint={`/movie/${id}/reviews?${languageQuery}`}
                     errorMessage={t("movieDetailReviewersFailure")}

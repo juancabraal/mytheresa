@@ -44,7 +44,7 @@
     .wish-button {
       margin-right: - metrics.spacing(2);
   
-      .wish-added {
+      &.wish-added {
         color: colors.$FAILURE_COLOR;
       }
     }
